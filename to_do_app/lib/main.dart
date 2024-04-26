@@ -4,19 +4,25 @@ import 'package:google_fonts/google_fonts.dart';
 
 
 void main() {
-  runApp(const MyApp());
+ runApp(const MyApp());
 }
+
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key});
+  
 
   @override
   Widget build(BuildContext context) {
+   
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'To Do App',
+      
+
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.deepPurple),
+        
+        colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.orange),
         // Removing useMaterial3 as it's not necessary
       ),
       home: const MyHomePage(title: 'To Do Application'),
@@ -45,11 +51,19 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     String formattedDate = DateFormat.yMMMMd().format(DateTime.now());
+    
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.primary,
-        title: Text(widget.title),
-      ),
+        title: Text(widget.title,
+      style: TextStyle(
+      fontFamily: GoogleFonts.elMessiri().fontFamily,
+      fontSize: 30,
+      fontWeight: FontWeight.bold,
+      color: Color.fromARGB(255, 0, 0, 0),
+    ),
+  ),
+),
       body: Stack(
         children: [
           Container(
@@ -67,21 +81,19 @@ class _MyHomePageState extends State<MyHomePage> {
                 Text(
                   'Welcome to your To Do App!',
                   style: TextStyle(
-    fontFamily: GoogleFonts.elMessiri().fontFamily,
-    fontSize: 24,
-    fontWeight: FontWeight.bold,
-    color: Colors.white,
-  ),
-                  
-                ),
-                SizedBox(height: 20),
+                    fontFamily: GoogleFonts.elMessiri().fontFamily,
+                                    fontSize: 40,
+                                    fontWeight: FontWeight.bold,
+                                    color: Color.fromARGB(255, 216, 108, 19)              ),
+                                ),
                 Text(
-                  'Today\'s Date: $formattedDate',
+                  'Date: $formattedDate',
                   style: TextStyle(
-                    fontSize: 18,
-                    color: Colors.white,
-                  ),
-                ),
+                    fontFamily: GoogleFonts.elMessiri().fontFamily,
+                                    fontSize: 30,
+                                    fontWeight: FontWeight.bold,
+                                    color: Color.fromARGB(255, 216, 108, 19)              ),
+                                ),
                 SizedBox(height: 20),
                 const Text(
                   'You have pushed the button this many times:',
