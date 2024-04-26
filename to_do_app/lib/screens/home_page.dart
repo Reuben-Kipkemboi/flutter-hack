@@ -22,12 +22,15 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  
+
   @override
   Widget build(BuildContext context) {
     String formattedDate = DateFormat.yMMMMd().format(DateTime.now());
     
     return Scaffold(
       appBar: AppBar(
+         centerTitle: true,
         backgroundColor: Theme.of(context).colorScheme.primary,
         title: Text(widget.title,
       style: TextStyle(
@@ -36,6 +39,7 @@ class _MyHomePageState extends State<MyHomePage> {
       fontWeight: FontWeight.bold,
       color: Color.fromARGB(255, 0, 0, 0),
     ),
+    
   ),
 ),
       body: Stack(
