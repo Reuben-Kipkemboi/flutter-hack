@@ -42,6 +42,7 @@ class _MyHomePageState extends State<MyHomePage> {
     
   ),
 ),
+      
       body: Stack(
         children: [
           Container(
@@ -52,41 +53,49 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
           ),
-          Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Text(
-                  'Welcome to your To Do App!',
-                  style: TextStyle(
-                    fontFamily: GoogleFonts.elMessiri().fontFamily,
-                                    fontSize: 40,
-                                    fontWeight: FontWeight.bold,
-                                    color: Color.fromARGB(255, 216, 108, 19)),
-                                ),
-                Text(
-                  'Date: $formattedDate',
-                  style: TextStyle(
-                    fontFamily: GoogleFonts.elMessiri().fontFamily,
-                                    fontSize: 30,
-                                    fontWeight: FontWeight.bold,
-                                    color: Color.fromARGB(255, 216, 108, 19)),
-                                ),
-                SizedBox(height: 20),
-                const Text(
-                  'You have pushed the button this many times:',
+          Padding(
+      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 0),
+      child: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text(
+                'Welcome to your To Do App!',
+                style: TextStyle(
+                  fontFamily: GoogleFonts.elMessiri().fontFamily,
+                  fontSize: 40,
+                  fontWeight: FontWeight.bold,
+                  color: Color.fromARGB(255, 216, 108, 19),
                 ),
-                Text(
-                  '$_counter',
-                  style: Theme.of(context).textTheme.headline6,
+              ),
+              Text(
+                'Date: $formattedDate',
+                style: TextStyle(
+                  fontFamily: GoogleFonts.elMessiri().fontFamily,
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
+                  color: Color.fromARGB(255, 216, 108, 19),
                 ),
-              ],
-            ),
+              ),
+              SizedBox(height: 20),
+              const Text(
+                'You have pushed the button this many times:',
+              ),
+              Text(
+                '$_counter',
+                style: Theme.of(context).textTheme.headline6,
+              ),
+            ],
           ),
-        ],
+        ),
       ),
+    ),
+  ],
+),
+
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
+        onPressed: () {},
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ),
