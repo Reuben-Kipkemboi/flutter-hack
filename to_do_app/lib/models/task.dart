@@ -1,11 +1,11 @@
-class Task {
-  final String id;
-  final String title;
-  final bool isDone;
+class ToDo {
+  String id;
+  String todoItem;
+  bool isCleared;
 
-  Task({
+  ToDo({
     required this.id,
-    required this.title,
-    required this.isDone,
+    required this.todoItem,
+    this.isCleared = false,
   });
 }
