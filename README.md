@@ -32,19 +32,20 @@ User Can :-
 
 Application details
 
-![Quotes](./assets/images/general.png)
+![Quotes](./to_do_app/assets/images/general.png)
 
 Add Tasks
 
-![Add screen](./assets/images/add.png)
+![Add screen](./to_do_app/assets/images/add.png)
 
 Check completed tasks
 
-![completed ](./assets/images/completed.png)
+![completed ](./to_do_app/assets/images/completed.png)
+
 
 View Pending,completed and All Tasks
 
-![view](./static/images/filter.png)
+![view](./to_do_app/assets/images/filter.png)
 
 ## Installation Requirements
 
