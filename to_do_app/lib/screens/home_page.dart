@@ -98,11 +98,12 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
+                    
                     Text(
                       'Welcome to your To Do App!',
                       style: TextStyle(
                         fontFamily: GoogleFonts.elMessiri().fontFamily,
-                        fontSize: 40,
+                        fontSize: 28,
                         fontWeight: FontWeight.bold,
                         color: Color.fromARGB(255, 216, 108, 19),
                       ),
@@ -111,11 +112,21 @@ class _MyHomePageState extends State<MyHomePage> {
                       'Date: $formattedDate',
                       style: TextStyle(
                         fontFamily: GoogleFonts.elMessiri().fontFamily,
-                        fontSize: 30,
+                        fontSize: 24,
                         fontWeight: FontWeight.bold,
                         color: Color.fromARGB(255, 216, 108, 19),
                       ),
                     ),
+                    Text(
+                      'Whats your main goal today?',
+                      style: TextStyle(
+                        fontFamily: GoogleFonts.elMessiri().fontFamily,
+                        fontSize: 23,
+                        fontWeight: FontWeight.bold,
+                        color: Color.fromARGB(255, 216, 108, 19),
+                      ),
+                    ),
+                    
                     SizedBox(height: 20),
                     Column(
                       children: filteredList.map((todo) {
