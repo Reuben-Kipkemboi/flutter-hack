@@ -36,6 +36,35 @@ class _MyHomePageState extends State<MyHomePage> {
             color: Color.fromARGB(255, 0, 0, 0),
           ),
         ),
+        actions: [
+          TextButton.icon(
+            onPressed: () {
+              setState(() {
+                todoList.removeWhere((todo) => todo.checked);
+              });
+            },
+            icon: Icon(Icons.delete, color: Colors.red),
+            label: Text('Clear Done', style: TextStyle(color: Colors.black)),
+            style: ButtonStyle(
+              foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+              backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
+            ),
+          ),
+          SizedBox(width: 10),
+          TextButton.icon(
+            onPressed: () {
+              setState(() {
+                todoList.clear();
+              });
+            },
+            icon: Icon(Icons.clear_all, color: Colors.red),
+            label: Text('Clear All', style: TextStyle(color: Colors.black)),
+            style: ButtonStyle(
+              foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+              backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
+            ),
+          ),
+        ],
       ),
       body: Stack(
         children: [
@@ -76,14 +105,19 @@ class _MyHomePageState extends State<MyHomePage> {
                     Column(
                       children: todoList.map((todo) {
                         return Card(
-                          color: todo.checked ? Colors.orange : Colors.white, // Set card background color based on completion status
+                          color: todo.checked
+                              ? Colors.orange
+                              : Colors
+                                  .white, // Set card background color based on completion status
                           child: CheckboxListTile(
                             title: Text(
                               todo.text,
                               style: TextStyle(
                                 fontFamily: GoogleFonts.elMessiri().fontFamily,
                                 color: Colors.black,
-                                decoration: todo.checked ? TextDecoration.lineThrough : null,
+                                decoration: todo.checked
+                                    ? TextDecoration.lineThrough
+                                    : null,
                               ),
                             ),
                             value: todo.checked,
@@ -125,7 +159,9 @@ class _MyHomePageState extends State<MyHomePage> {
         return AlertDialog(
           title: Text(
             "New Todo",
-            style: TextStyle(fontFamily: GoogleFonts.elMessiri().fontFamily), // Apply elMessiri font here
+            style: TextStyle(
+                fontFamily: GoogleFonts.elMessiri()
+                    .fontFamily), // Apply elMessiri font here
           ),
           content: TextField(
             autofocus: true,
@@ -141,7 +177,9 @@ class _MyHomePageState extends State<MyHomePage> {
               },
               child: Text(
                 "Cancel",
-                style: TextStyle(fontFamily: GoogleFonts.elMessiri().fontFamily), // Apply elMessiri font here
+                style: TextStyle(
+                    fontFamily: GoogleFonts.elMessiri()
+                        .fontFamily), // Apply elMessiri font here
               ),
             ),
             TextButton(
@@ -152,7 +190,9 @@ class _MyHomePageState extends State<MyHomePage> {
               },
               child: Text(
                 "Add",
-                style: TextStyle(fontFamily: GoogleFonts.elMessiri().fontFamily), // Apply elMessiri font here
+                style: TextStyle(
+                    fontFamily: GoogleFonts.elMessiri()
+                        .fontFamily), // Apply elMessiri font here
               ),
             ),
           ],
