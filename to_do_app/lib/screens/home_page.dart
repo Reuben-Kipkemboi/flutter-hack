@@ -24,7 +24,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
     return Scaffold(
       appBar: AppBar(
-        centerTitle: true,
+        // centerTitle: true,
         backgroundColor: Theme.of(context).colorScheme.primary,
         title: Text(
           widget.title,
@@ -48,7 +48,9 @@ class _MyHomePageState extends State<MyHomePage> {
                 .map((String value) {
               return DropdownMenuItem<String>(
                 value: value,
-                child: Text(value),
+                child: Text(value, style: TextStyle(
+            fontFamily: GoogleFonts.elMessiri().fontFamily,
+          ),),
               );
             }).toList(),
           ),
@@ -59,7 +61,7 @@ class _MyHomePageState extends State<MyHomePage> {
               });
             },
             icon: Icon(Icons.delete, color: Colors.red),
-            label: Text('Clear Done', style: TextStyle(color: Colors.black)),
+            label: Text('Clear Done Todos', style: TextStyle(color: Colors.black, fontFamily: GoogleFonts.elMessiri().fontFamily,)),
             style: ButtonStyle(
               foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
               backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
@@ -73,7 +75,7 @@ class _MyHomePageState extends State<MyHomePage> {
               });
             },
             icon: Icon(Icons.clear_all, color: Colors.red),
-            label: Text('Clear All', style: TextStyle(color: Colors.black)),
+            label: Text('Clear All Todos', style: TextStyle(color: Colors.black, fontFamily: GoogleFonts.elMessiri().fontFamily,)),
             style: ButtonStyle(
               foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
               backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
@@ -100,7 +102,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   children: <Widget>[
                     
                     Text(
-                      'Welcome to your To Do App!',
+                      'Welcome to your To Do Application!',
                       style: TextStyle(
                         fontFamily: GoogleFonts.elMessiri().fontFamily,
                         fontSize: 28,
