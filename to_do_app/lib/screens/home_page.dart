@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:to_do_app/models/task.dart';
 import '../models/todo_item.dart';
-import '../models/todo_list.dart';
-import '../models/todo_item.dart';
-import '../utils/loop_todoCards.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);
@@ -18,10 +14,13 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   List<TodoItem> todoList = []; // Define todoList here
+  String filter = 'All'; // Default filter
 
   @override
   Widget build(BuildContext context) {
     String formattedDate = DateFormat.yMMMMd().format(DateTime.now());
+
+    List<TodoItem> filteredList = filterTasks(todoList);
 
     return Scaffold(
       appBar: AppBar(
@@ -37,6 +36,22 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ),
         actions: [
+          DropdownButton<String>(
+            value: filter,
+            icon: Icon(Icons.filter_list),
+            onChanged: (String? newValue) {
+              setState(() {
+                filter = newValue!;
+              });
+            },
+            items: <String>['All', 'Completed', 'Pending']
+                .map((String value) {
+              return DropdownMenuItem<String>(
+                value: value,
+                child: Text(value),
+              );
+            }).toList(),
+          ),
           TextButton.icon(
             onPressed: () {
               setState(() {
@@ -103,7 +118,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                     SizedBox(height: 20),
                     Column(
-                      children: todoList.map((todo) {
+                      children: filteredList.map((todo) {
                         return Card(
                           color: todo.checked
                               ? Colors.orange
@@ -161,7 +176,7 @@ class _MyHomePageState extends State<MyHomePage> {
             "New Todo",
             style: TextStyle(
                 fontFamily: GoogleFonts.elMessiri()
-                    .fontFamily), // Apply elMessiri font here
+                    .fontFamily), 
           ),
           content: TextField(
             autofocus: true,
@@ -173,26 +188,26 @@ class _MyHomePageState extends State<MyHomePage> {
           actions: [
             TextButton(
               onPressed: () {
-                Navigator.pop(context); // Close the dialog
+                Navigator.pop(context); 
               },
               child: Text(
                 "Cancel",
                 style: TextStyle(
                     fontFamily: GoogleFonts.elMessiri()
-                        .fontFamily), // Apply elMessiri font here
+                        .fontFamily), 
               ),
             ),
             TextButton(
               onPressed: () {
                 final newTodoItem = TodoItem(checked: false, text: newTodoText);
-                addTodoItem(newTodoItem); // Call addTodoItem here
-                Navigator.pop(context); // Close the dialog
+                addTodoItem(newTodoItem); 
+                Navigator.pop(context); 
               },
               child: Text(
                 "Add",
                 style: TextStyle(
                     fontFamily: GoogleFonts.elMessiri()
-                        .fontFamily), // Apply elMessiri font here
+                        .fontFamily), 
               ),
             ),
           ],
@@ -206,5 +221,17 @@ class _MyHomePageState extends State<MyHomePage> {
     setState(() {
       todoList.add(todoItem);
     });
+  }
+
+  // Function to filter tasks based on the selected filter
+  List<TodoItem> filterTasks(List<TodoItem> tasks) {
+    switch (filter) {
+      case 'Completed':
+        return tasks.where((todo) => todo.checked).toList();
+      case 'Pending':
+        return tasks.where((todo) => !todo.checked).toList();
+      default:
+        return tasks;
+    }
   }
 }
